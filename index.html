@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Property Matchmaker helps you explore property options in Penang, Malaysia. Contact us for personalised property guidance.">
+  <title>Property Matchmaker | Penang Real Estate</title>
+  <style>
+    :root {
+      --navy: #07162f;
+      --navy-light: #102746;
+      --gold: #e3c17b;
+      --white: #f7f8fc;
+      --muted: #b8c4d8;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 7%;
+      border-bottom: 1px solid #ffffff18;
+    }
+
+    .brand { font-size: 19px; font-weight: 800; }
+    .brand span { color: var(--gold); }
+
+    .lang button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 6px;
+    }
+
+    .lang button.active { color: var(--gold); }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 30px;
+      padding: 70px 9%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin: 22px 0;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .intro {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+      max-width: 510px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+    .primary { background: var(--gold); color: var(--navy); }
+    .secondary { border: 1px solid #ffffff35; }
+
+    .visual {
+      min-height: 350px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .orb {
+      position: absolute;
+      width: min(330px, 75vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #294c73, #102541 60%, #08152b);
+      box-shadow: 0 0 90px #4a79ad20;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .character {
+      z-index: 1;
+      width: 190px;
+      height: 220px;
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .head {
+      position: absolute;
+      width: 142px;
+      height: 142px;
+      border-radius: 48% 48% 45% 45%;
+      background: #e9bb91;
+      top: 5px;
+      left: 24px;
+      border: 4px solid #f4d0ad;
+      box-shadow: inset 0 -8px 0 #dba57f;
+    }
+
+    .hair {
+      position: absolute;
+      top: -5px;
+      left: 20px;
+      width: 100px;
+      height: 43px;
+      background: #171c27;
+      border-radius: 60% 60% 25% 25%;
+      transform: rotate(-5deg);
+    }
+
+    .eye {
+      position: absolute;
+      top: 68px;
+      left: 37px;
+      width: 12px;
+      height: 16px;
+      border-radius: 50%;
+      background: #172031;
+      box-shadow: 49px 0 #172031;
+    }
+
+    .smile {
+      position: absolute;
+      top: 99px;
+      left: 54px;
+      width: 31px;
+      height: 14px;
+      border-bottom: 3px solid #8f493e;
+      border-radius: 50%;
+    }
+
+    .body-shape {
+      position: absolute;
+      width: 116px;
+      height: 100px;
+      left: 37px;
+      bottom: 0;
+      background: linear-gradient(110deg, #172b48, #080e1a);
+      border-radius: 35px 35px 14px 14px;
+      border: 2px solid #29435e;
+    }
+
+    .shirt {
+      position: absolute;
+      left: 47px;
+      top: 0;
+      width: 23px;
+      height: 49px;
+      background: #f7f4eb;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    .tie {
+      position: absolute;
+      top: 5px;
+      left: 54px;
+      width: 10px;
+      height: 42px;
+      background: var(--gold);
+      clip-path: polygon(50% 0, 100% 18%, 70% 100%, 30% 100%, 0 18%);
+    }
+
+    .lens {
+      position: absolute;
+      right: -5px;
+      top: 58px;
+      width: 74px;
+      height: 74px;
+      border: 7px solid var(--gold);
+      border-radius: 50%;
+      background: #d7e5f522;
+      box-shadow: 0 0 30px #e3c17b35;
+    }
+
+    .lens::after {
+      content: "";
+      position: absolute;
+      width: 42px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 8px;
+      right: -31px;
+      bottom: -17px;
+      transform: rotate(48deg);
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 2;
+      background: #132b49dd;
+      border: 1px solid #ffffff20;
+      border-radius: 14px;
+      padding: 13px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      backdrop-filter: blur(8px);
+    }
+
+    .float-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .card-one { top: 35px; right: 0; }
+    .card-two { bottom: 35px; left: 0; }
+
+    section.content {
+      padding: 85px 9%;
+      border-top: 1px solid #ffffff12;
+    }
+
+    .section-label {
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    h2 { font-size: clamp(30px, 4vw, 46px); margin: 14px 0; }
+    .section-copy { max-width: 700px; color: var(--muted); line-height: 1.9; }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .service {
+      padding: 26px;
+      background: linear-gradient(145deg, #122947, #0b1b33);
+      border: 1px solid #ffffff12;
+      border-radius: 18px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .service:hover { transform: translateY(-5px); border-color: #e3c17b66; }
+    .service .symbol { font-size: 27px; }
+    .service h3 { font-size: 18px; }
+    .service p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+
+    .contact-panel {
+      background: linear-gradient(135deg, #173456, #10223d);
+      border: 1px solid #ffffff18;
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 26px 9%;
+      color: #93a5bf;
+      font-size: 12px;
+      border-top: 1px solid #ffffff12;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .socials { display: flex; gap: 18px; color: var(--gold); }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @media (max-width: 760px) {
+      nav { padding: 18px 5%; }
+      .hero { grid-template-columns: 1fr; padding: 55px 7%; }
+      .visual { min-height: 330px; }
+      section.content { padding: 65px 7%; }
+      .services { grid-template-columns: 1fr; }
+      .contact-panel { padding: 27px; }
+      .card-one { right: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="#">理想型 <span>PROPERTY MATCHMAKER</span></a>
+    <div class="lang">
+      <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
+      <button id="zhBtn" onclick="setLanguage('zh')">中文</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow" data-en="YOUR PROPERTY MATCHMAKER IN PENANG" data-zh="你的槟城房地产配对顾问">YOUR PROPERTY MATCHMAKER IN PENANG</div>
+        <h1 data-en="Find a Place That <span>Feels Like You.</span>" data-zh="找到真正<span>适合你的家。</span>">Find a Place That <span>Feels Like You.</span></h1>
+        <p class="intro" data-en="Property decisions can feel overwhelming. I help you explore your options and find a property that fits your needs in Penang." data-zh="买房不应该让人不知所措。我会协助你了解不同选择，在槟城寻找适合你需求的房地产。">Property decisions can feel overwhelming. I help you explore your options and find a property that fits your needs in Penang.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact" data-en="Let's Talk on WhatsApp ↗" data-zh="WhatsApp 联系我 ↗">Let's Talk on WhatsApp ↗</a>
+          <a class="btn secondary" href="#services" data-en="Explore My Services" data-zh="了解我的服务">Explore My Services</a>
+        </div>
+      </div>
+
+      <div class="visual" aria-label="Illustrated property matchmaker character">
+        <div class="orb"></div>
+        <div class="float-card card-one"><strong>Penang</strong><span data-en="Local property guidance" data-zh="槟城房地产咨询">Local property guidance</span></div>
+        <div class="character" aria-hidden="true">
+          <div class="head">
+            <div class="hair"></div>
+            <div class="eye"></div>
+            <div class="smile"></div>
+          </div>
+          <div class="body-shape"><div class="shirt"></div><div class="tie"></div></div>
+          <div class="lens"></div>
+        </div>
+        <div class="float-card card-two"><strong>01 / 01</strong><span data-en="Your next chapter starts here" data-zh="从这里开启你的下一篇章">Your next chapter starts here</span></div>
+      </div>
+    </section>
+
+    <section class="content" id="about">
+      <div class="section-label" data-en="A LITTLE ABOUT ME" data-zh="关于我">A LITTLE ABOUT ME</div>
+      <h2 data-en="Property guidance, made personal." data-zh="让房地产咨询更贴近你的需求。">Property guidance, made personal.</h2>
+      <p class="section-copy" data-en="I'm your property matchmaker in Penang. My goal is to understand what matters to you, answer your questions clearly, and help you make informed property decisions." data-zh="我是你的槟城房地产配对顾问。我希望了解你真正重视的事情，清楚解答你的疑问，协助你作出更有根据的房地产决定。">I'm your property matchmaker in Penang. My goal is to understand what matters to you, answer your questions clearly, and help you make informed property decisions.</p>
+    </section>
+
+    <section class="content" id="services">
+      <div class="section-label" data-en="HOW I CAN HELP" data-zh="我可以怎样帮助你">HOW I CAN HELP</div>
+      <h2 data-en="Your property journey, step by step." data-zh="一步一步，陪你了解房地产。">Your property journey, step by step.</h2>
+      <p class="section-copy" data-en="Clear information and personalised guidance for your property journey in Penang." data-zh="为你提供清晰的资讯与个人化协助，让你更了解槟城房地产。">Clear information and personalised guidance for your property journey in Penang.</p>
+      <div class="services">
+        <article class="service">
+          <div class="symbol">⌂</div>
+          <h3 data-en="Buying a Property" data-zh="购房咨询">Buying a Property</h3>
+          <p data-en="Explore property options based on your needs, preferences and budget." data-zh="根据你的需求、偏好和预算，了解适合的房地产选择。">Explore property options based on your needs, preferences and budget.</p>
+        </article>
+        <article class="service">
+          <div class="symbol">◎</div>
+          <h3 data-en="Property Investment" data-zh="房地产投资咨询">Property Investment</h3>
+          <p data-en="Understand location, property features and important questions to consider before investing." data-zh="了解地点、房地产特点，以及投资前值得考虑的重要问题。">Understand location, property features and important questions to consider before investing.</p>
+        </article>
+        <article class="service">
+          <div class="symbol">⌖</div>
+          <h3 data-en="Penang Area Guidance" data-zh="槟城区域咨询">Penang Area Guidance</h3>
+          <p data-en="Learn about different areas in Penang and the lifestyle each area may offer." data-zh="了解槟城不同地区的特点，以及各区可能提供的生活方式。">Learn about different areas in Penang and the lifestyle each area may offer.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content" id="contact">
+      <div class="contact-panel">
+        <div>
+          <div class="section-label" data-en="LET'S CONNECT" data-zh="联系我">LET'S CONNECT</div>
+          <h2 data-en="Let's find your next move." data-zh="一起寻找你的下一步。">Let's find your next move.</h2>
+          <p class="section-copy" data-en="Have a property question? Get in touch and let's talk." data-zh="对房地产有疑问？欢迎联系我，一起聊聊你的需求。">Have a property question? Get in touch and let's talk.</p>
+        </div>
+        <a class="btn primary" id="whatsappBtn" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> 理想型 Property Matchmaker</span>
+    <div class="socials">
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="#" aria-label="Instagram">Instagram</a>
+    </div>
+    <span>Penang, Malaysia</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function setLanguage(language) {
+      document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+      document.querySelectorAll("[data-en]").forEach(function(element) {
+        element.innerHTML = element.getAttribute("data-" + language);
+      });
+      document.getElementById("enBtn").classList.toggle("active", language === "en");
+      document.getElementById("zhBtn").classList.toggle("active", language === "zh");
+    }
+
+    // Replace 60123456789 with your WhatsApp number, including country code.
+    // Example format: 60123456789 (no +, spaces or dashes).
+    const whatsappNumber = "";
+    if (whatsappNumber) {
+      document.getElementById("whatsappBtn").href = "https://wa.me/" + whatsappNumber;
+      document.querySelectorAll('a[href="#contact"]').forEach(function(link) {
+        link.href = "https://wa.me/" + whatsappNumber;
+      });
+    }
+  </script>
+</body>
+</html>
