@@ -1,576 +1,376 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#06101f">
-  <meta name="description" content="理想型 Property Matchmaker — Your property matchmaker in Penang, Malaysia. Personal guidance for home buyers and property investors.">
-  <meta name="keywords" content="Penang property, Penang real estate agent, buy property Penang, 槟城房地产, 槟城买房">
-  <meta property="og:title" content="理想型 Property Matchmaker | Penang">
-  <meta property="og:description" content="Find a place that fits your future. 找到适合你的理想居所。">
-  <title>理想型 Property Matchmaker | Penang Real Estate</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06101f">
+<meta name="description" content="理想型 Property Matchmaker — Penang property guidance for home buyers and property investors. 槟城房地产买房指南与置业咨询。">
+<meta name="keywords" content="Penang property, Penang real estate, property matchmaker, 槟城房产, 槟城买房">
+<title>理想型 Property Matchmaker | Penang</title>
+<style>
+:root {
+  --bg:#06101f;
+  --bg2:#091a30;
+  --panel:rgba(14,35,61,.72);
+  --white:#f4f8ff;
+  --muted:#a8b8cc;
+  --cyan:#57e7f5;
+  --gold:#eacb83;
+  --line:rgba(87,231,245,.2);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
+body {
+  margin:0; color:var(--white);
+  background:
+    radial-gradient(ellipse at 80% 10%,rgba(26,111,170,.22),transparent 35%),
+    radial-gradient(ellipse at 10% 45%,rgba(21,78,130,.18),transparent 38%),
+    var(--bg);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  overflow-x:hidden;
+}
+body:before {
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background-image:linear-gradient(rgba(87,231,245,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(87,231,245,.035) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+a { color:inherit; text-decoration:none; }
+button { font:inherit; cursor:pointer; }
+.wrap { width:min(1120px,92%); margin:auto; }
+header {
+  position:sticky; top:0; z-index:50;
+  background:rgba(6,16,31,.78); backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+.brand { display:flex; align-items:center; gap:12px; min-width:0; }
+.brand img {
+  width:48px; height:48px; object-fit:contain; border-radius:13px;
+  background:rgba(255,255,255,.08); padding:3px;
+  border:1px solid var(--line);
+}
+.brand-name { font-weight:800; letter-spacing:.2px; line-height:1.2; }
+.brand-name small { display:block; color:var(--gold); font-size:11px; letter-spacing:2px; margin-top:4px; }
+.navlinks { display:flex; align-items:center; gap:23px; color:var(--muted); font-size:13px; }
+.navlinks a:hover { color:var(--cyan); }
+.lang {
+  border:1px solid var(--line); color:var(--cyan); background:rgba(87,231,245,.07);
+  border-radius:30px; padding:9px 13px; white-space:nowrap;
+}
+.hero { min-height:660px; display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:25px; padding:80px 0 65px; position:relative; }
+.eyebrow { color:var(--cyan); letter-spacing:3px; text-transform:uppercase; font-size:11px; font-weight:800; }
+h1 { font-size:clamp(42px,6vw,76px); line-height:1.06; letter-spacing:-2.5px; margin:22px 0; }
+h1 span { color:var(--cyan); text-shadow:0 0 32px rgba(87,231,245,.24); }
+.lead { color:var(--muted); line-height:1.9; max-width:550px; font-size:16px; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding:14px 19px; border-radius:12px; font-weight:750; font-size:13px;
+  transition:transform .25s,box-shadow .25s;
+}
+.btn:hover { transform:translateY(-3px); }
+.btn-primary { color:#06101f; background:linear-gradient(135deg,#8af5ff,var(--cyan)); box-shadow:0 8px 30px rgba(87,231,245,.19); }
+.btn-secondary { border:1px solid rgba(234,203,131,.45); color:var(--gold); background:rgba(234,203,131,.05); }
+.visual { min-height:410px; position:relative; display:grid; place-items:center; perspective:900px; }
+.orb {
+  width:min(350px,80vw); aspect-ratio:1; border-radius:50%;
+  background:radial-gradient(circle at 35% 28%,rgba(87,231,245,.17),rgba(26,72,120,.13) 42%,rgba(6,16,31,.05) 70%);
+  border:1px solid rgba(87,231,245,.28);
+  box-shadow:inset 0 0 50px rgba(87,231,245,.08),0 0 70px rgba(32,142,203,.13);
+  animation:float 6s ease-in-out infinite;
+  position:absolute;
+}
+.orb:before,.orb:after {
+  content:""; position:absolute; inset:12%; border:1px solid rgba(87,231,245,.2);
+  border-radius:50%; transform:rotateX(65deg) rotateZ(-20deg);
+}
+.orb:after { inset:2%; transform:rotateY(65deg) rotateZ(25deg); border-color:rgba(234,203,131,.2); }
+.holo-card {
+  z-index:2; width:min(300px,80%); padding:25px 22px;
+  border:1px solid rgba(87,231,245,.25); border-radius:22px;
+  background:linear-gradient(145deg,rgba(19,48,78,.78),rgba(8,22,42,.65));
+  backdrop-filter:blur(16px); box-shadow:0 25px 70px rgba(0,0,0,.3);
+  transform:rotateY(-8deg) rotateX(4deg); animation:float 5s ease-in-out infinite;
+}
+.holo-icon { font-size:44px; margin-bottom:13px; filter:drop-shadow(0 0 16px rgba(87,231,245,.45)); }
+.holo-card strong { display:block; font-size:20px; }
+.holo-card p { color:var(--muted); font-size:13px; line-height:1.7; }
+.chip { display:inline-block; border:1px solid rgba(234,203,131,.35); border-radius:30px; color:var(--gold); font-size:10px; padding:7px 10px; letter-spacing:1px; }
+.float-tag { position:absolute; padding:12px 15px; border-radius:13px; background:rgba(9,28,49,.9); border:1px solid var(--line); box-shadow:0 10px 35px rgba(0,0,0,.22); font-size:12px; color:var(--cyan); animation:float 4s ease-in-out infinite; }
+.tag-one { top:13%; right:0; }
+.tag-two { bottom:13%; left:0; animation-delay:-2s; }
+section { padding:76px 0; }
+.section-head { max-width:650px; margin-bottom:30px; }
+.section-head h2 { font-size:clamp(30px,4vw,46px); margin:12px 0; letter-spacing:-1px; }
+.section-head p { color:var(--muted); line-height:1.8; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:17px; }
+.card {
+  padding:25px; border-radius:19px; border:1px solid rgba(87,231,245,.14);
+  background:linear-gradient(145deg,rgba(17,40,66,.7),rgba(8,21,40,.6));
+  box-shadow:inset 0 1px rgba(255,255,255,.035);
+  transition:transform .25s,border-color .25s;
+}
+.card:hover { transform:translateY(-5px); border-color:rgba(87,231,245,.48); }
+.card-icon { width:47px; height:47px; display:grid; place-items:center; border-radius:14px; background:rgba(87,231,245,.08); border:1px solid var(--line); font-size:23px; }
+.card h3 { margin:20px 0 10px; }
+.card p { color:var(--muted); line-height:1.8; font-size:14px; }
+.about { display:grid; grid-template-columns:.8fr 1.2fr; gap:30px; align-items:center; }
+.about-panel { padding:30px; border-radius:22px; border:1px solid rgba(234,203,131,.22); background:linear-gradient(145deg,rgba(234,203,131,.08),rgba(12,31,53,.65)); }
+.about-panel .big { font-size:42px; font-weight:850; color:var(--gold); }
+.about-copy p { color:var(--muted); line-height:1.95; }
+.pills { display:flex; gap:9px; flex-wrap:wrap; margin-top:18px; }
+.pills span { border:1px solid var(--line); border-radius:30px; padding:8px 11px; font-size:12px; color:#dceeff; }
+.contact {
+  padding:38px; display:flex; justify-content:space-between; align-items:center; gap:24px;
+  border-radius:24px; border:1px solid rgba(87,231,245,.25);
+  background:radial-gradient(ellipse at 90% 0%,rgba(87,231,245,.13),transparent 45%),rgba(12,31,53,.65);
+}
+.contact h2 { margin:0 0 12px; font-size:clamp(28px,4vw,42px); }
+.contact p { color:var(--muted); line-height:1.8; margin:0; }
+footer { border-top:1px solid rgba(255,255,255,.08); padding:27px 0; color:var(--muted); font-size:12px; }
+.footer-row { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+.social { display:flex; gap:15px; }
+.social a:hover { color:var(--cyan); }
 
-  <style>
-    :root {
-      --bg: #06101f;
-      --bg2: #0a1930;
-      --panel: rgba(17, 38, 65, .64);
-      --white: #f4f8ff;
-      --muted: #a8b8cc;
-      --cyan: #57e7f5;
-      --gold: #eacb83;
-      --line: rgba(160, 205, 235, .18);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body {
-      margin: 0;
-      color: var(--white);
-      background:
-        radial-gradient(ellipse at 75% 8%, rgba(26, 111, 170, .22), transparent 38%),
-        radial-gradient(ellipse at 5% 45%, rgba(30, 80, 135, .15), transparent 40%),
-        var(--bg);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      opacity: .18;
-      background-image: linear-gradient(rgba(120,180,220,.09) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(120,180,220,.09) 1px, transparent 1px);
-      background-size: 58px 58px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
-    .glow {
-      position: absolute; width: 340px; height: 340px; border-radius: 50%;
-      filter: blur(85px); opacity: .16; pointer-events: none;
-      background: var(--cyan);
-    }
-    .glow.one { top: 180px; right: -150px; }
-    .glow.two { top: 1050px; left: -180px; background: #3b71ff; }
-
-    header {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(5, 14, 28, .78);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(18px);
-    }
-    .nav {
-      min-height: 74px; display: flex; align-items: center;
-      justify-content: space-between; gap: 20px;
-    }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 750; letter-spacing: -.4px; }
-    .brand-mark {
-      width: 39px; height: 39px; border-radius: 13px;
-      display: grid; place-items: center; color: var(--cyan);
-      border: 1px solid rgba(87,231,245,.5);
-      background: linear-gradient(145deg, rgba(87,231,245,.18), rgba(234,203,131,.08));
-      box-shadow: 0 0 26px rgba(87,231,245,.12);
-    }
-    .brand small { display: block; font-size: 10px; letter-spacing: 2px; color: var(--muted); margin-top: 3px; }
-    .nav-links { display: flex; align-items: center; gap: 24px; color: #c1d0e1; font-size: 13px; }
-    .nav-links a:hover { color: var(--cyan); }
-    .nav-actions { display: flex; gap: 9px; align-items: center; }
-    .lang-btn, .menu-btn {
-      color: var(--white); background: rgba(255,255,255,.04);
-      border: 1px solid var(--line); padding: 9px 12px; border-radius: 12px; cursor: pointer;
-    }
-    .menu-btn { display: none; }
-
-    .hero { min-height: 690px; display: grid; align-items: center; position: relative; padding: 86px 0 100px; }
-    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 34px; align-items: center; }
-    .eyebrow {
-      display: inline-flex; gap: 10px; align-items: center; color: var(--cyan);
-      border: 1px solid rgba(87,231,245,.24); background: rgba(87,231,245,.06);
-      padding: 9px 13px; border-radius: 99px; font-size: 11px; letter-spacing: 1.5px;
-    }
-    .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
-    h1 { font-size: clamp(44px, 6vw, 76px); line-height: 1.05; letter-spacing: -3px; margin: 25px 0 20px; }
-    .gradient-text {
-      background: linear-gradient(100deg, #fff 5%, var(--cyan) 52%, var(--gold) 100%);
-      color: transparent; background-clip: text; -webkit-background-clip: text;
-    }
-    .hero p { color: var(--muted); line-height: 1.9; max-width: 540px; font-size: 15px; }
-    .hero-buttons { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
-    .btn {
-      min-height: 48px; display: inline-flex; align-items: center; justify-content: center;
-      padding: 0 20px; border-radius: 14px; font-size: 13px; font-weight: 700;
-      transition: transform .25s, box-shadow .25s; cursor: pointer;
-    }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-primary {
-      color: #06101f; background: linear-gradient(110deg, var(--cyan), #b0f7f7);
-      box-shadow: 0 8px 30px rgba(87,231,245,.2);
-    }
-    .btn-secondary { border: 1px solid var(--line); background: rgba(255,255,255,.035); }
-    .hero-note { margin-top: 24px; color: #8299b5; font-size: 11px; letter-spacing: .5px; }
-
-    .visual {
-      position: relative; min-height: 435px; display: grid; place-items: center;
-      perspective: 1000px;
-    }
-    .orbit {
-      position: absolute; width: 350px; height: 350px; border: 1px solid rgba(87,231,245,.18);
-      border-radius: 50%; transform: rotateX(68deg) rotateZ(-20deg);
-      box-shadow: 0 0 50px rgba(87,231,245,.07), inset 0 0 35px rgba(87,231,245,.04);
-      animation: orbit 18s linear infinite;
-    }
-    .orbit::before, .orbit::after {
-      content: ""; position: absolute; border: 1px solid rgba(234,203,131,.24);
-      border-radius: 50%; inset: 30px;
-    }
-    .orbit::after { inset: -35px; border-color: rgba(87,231,245,.08); }
-    @keyframes orbit { to { transform: rotateX(68deg) rotateZ(340deg); } }
-    .glass-card {
-      position: absolute; padding: 17px 19px; border-radius: 18px;
-      border: 1px solid rgba(145,208,232,.25);
-      background: linear-gradient(135deg, rgba(28,61,94,.78), rgba(7,19,37,.7));
-      box-shadow: 0 20px 55px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.08);
-      backdrop-filter: blur(16px); animation: float 5s ease-in-out infinite;
-    }
-    .glass-card b { display: block; color: var(--gold); font-size: 12px; margin-bottom: 6px; }
-    .glass-card span { color: #c0cfdf; font-size: 11px; }
-    .card-a { top: 45px; right: 0; }
-    .card-b { bottom: 46px; left: 0; animation-delay: -2.5s; }
-    @keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -12px; } }
-    .center-symbol {
-      width: 190px; height: 190px; display: grid; place-items: center;
-      border-radius: 42px; transform: rotate(-8deg);
-      border: 1px solid rgba(87,231,245,.35);
-      background: linear-gradient(145deg, rgba(87,231,245,.16), rgba(234,203,131,.05));
-      box-shadow: 0 0 80px rgba(87,231,245,.11), inset 0 0 40px rgba(87,231,245,.08);
-    }
-    .center-symbol span { font-size: 76px; transform: rotate(8deg); filter: drop-shadow(0 0 20px rgba(87,231,245,.25)); }
-
-    section { padding: 92px 0; position: relative; }
-    .section-label { color: var(--cyan); text-transform: uppercase; font-size: 11px; letter-spacing: 2.5px; }
-    h2 { font-size: clamp(30px, 4vw, 47px); letter-spacing: -1.5px; line-height: 1.15; margin: 14px 0; }
-    .section-intro { max-width: 650px; color: var(--muted); font-size: 14px; line-height: 1.9; }
-    .section-head { margin-bottom: 35px; }
-    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: stretch; }
-    .panel {
-      border: 1px solid var(--line); border-radius: 24px; padding: 30px;
-      background: linear-gradient(145deg, rgba(20,44,73,.7), rgba(9,22,41,.72));
-      box-shadow: 0 22px 65px rgba(0,0,0,.13);
-    }
-    .panel h3 { font-size: 21px; margin: 0 0 13px; }
-    .panel p { color: var(--muted); font-size: 13px; line-height: 1.9; }
-    .quote-mark { color: var(--gold); font-size: 50px; line-height: 1; }
-    .mini-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
-    .tag { border: 1px solid var(--line); border-radius: 99px; padding: 8px 11px; color: #c7d5e5; font-size: 11px; }
-
-    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .service-card {
-      min-height: 245px; padding: 25px; border-radius: 22px; position: relative; overflow: hidden;
-      background: linear-gradient(145deg, rgba(18,42,70,.72), rgba(8,20,38,.65));
-      border: 1px solid var(--line); transition: transform .3s, border-color .3s;
-    }
-    .service-card:hover { transform: translateY(-7px); border-color: rgba(87,231,245,.48); }
-    .service-icon {
-      width: 48px; height: 48px; display: grid; place-items: center; border-radius: 15px;
-      color: var(--cyan); background: rgba(87,231,245,.09); border: 1px solid rgba(87,231,245,.18);
-      font-size: 22px; margin-bottom: 24px;
-    }
-    .service-card h3 { font-size: 17px; margin: 0 0 12px; }
-    .service-card p { color: var(--muted); font-size: 12px; line-height: 1.9; margin: 0; }
-    .service-card::after {
-      content: ""; position: absolute; width: 100px; height: 100px; border-radius: 50%;
-      background: var(--cyan); filter: blur(65px); opacity: .13; right: -30px; bottom: -30px;
-    }
-
-    .area-panel {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center;
-      border: 1px solid var(--line); border-radius: 28px; padding: clamp(25px, 5vw, 48px);
-      background: radial-gradient(ellipse at 90% 10%, rgba(87,231,245,.1), transparent 40%), rgba(12,29,51,.65);
-    }
-    .area-visual {
-      min-height: 240px; display: grid; place-items: center; border-radius: 22px;
-      background: radial-gradient(ellipse, rgba(87,231,245,.12), transparent 65%);
-      border: 1px solid rgba(87,231,245,.1); position: relative;
-    }
-    .map-ring { width: 180px; height: 180px; border: 1px solid rgba(87,231,245,.3); border-radius: 50%; display: grid; place-items: center; position: relative; }
-    .map-ring::before, .map-ring::after { content: ""; position: absolute; inset: 18px; border: 1px dashed rgba(234,203,131,.35); border-radius: 50%; }
-    .map-ring::after { inset: 38px; border-style: solid; border-color: rgba(87,231,245,.2); }
-    .map-pin { font-size: 43px; filter: drop-shadow(0 0 15px rgba(87,231,245,.35)); z-index: 1; }
-    .area-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
-    .area-list span { color: #d2dfed; border: 1px solid var(--line); background: rgba(255,255,255,.025); padding: 9px 12px; border-radius: 11px; font-size: 12px; }
-
-    .review-note { padding: 25px; border: 1px dashed rgba(234,203,131,.4); border-radius: 18px; color: var(--muted); line-height: 1.9; font-size: 13px; }
-    .contact-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 25px; align-items: center; }
-    .contact-card { padding: 32px; border: 1px solid rgba(87,231,245,.24); border-radius: 25px; background: linear-gradient(145deg, rgba(20,58,81,.55), rgba(9,24,43,.7)); }
-    .contact-card p { color: var(--muted); font-size: 13px; line-height: 1.9; }
-    .contact-detail { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 20px; color: #cbd9e8; font-size: 13px; line-height: 2; }
-    .socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    .socials a { border: 1px solid var(--line); padding: 10px 13px; border-radius: 11px; font-size: 12px; color: #d4e1ef; }
-    footer { padding: 28px 0; border-top: 1px solid var(--line); color: #8294aa; font-size: 11px; }
-    .footer-row { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
-
-    /* Floating chibi character */
-    .mascot {
-      --scroll-shift: 0px;
-      position: fixed; z-index: 30; right: 17px; bottom: 24px;
-      width: 142px; height: 208px; pointer-events: none;
-      transform: translateY(var(--scroll-shift));
-      transition: right .35s ease, transform .15s ease;
-      filter: drop-shadow(0 12px 22px rgba(0,0,0,.38));
-    }
-    .mascot.peek { right: -80px; }
-    .mascot.peek .mascot-body { transform: rotate(-8deg); }
-    .mascot-inner { position: relative; width: 100%; height: 100%; animation: mascot-bob 3.2s ease-in-out infinite; }
-    @keyframes mascot-bob { 0%,100% { translate: 0 0; } 50% { translate: 0 -7px; } }
-    .mascot-halo {
-      position: absolute; width: 108px; height: 108px; left: 18px; top: 1px; border-radius: 50%;
-      background: rgba(87,231,245,.14); filter: blur(20px);
-    }
-    .mascot-head {
-      position: absolute; z-index: 3; width: 93px; height: 88px; left: 23px; top: 11px;
-      border-radius: 44% 44% 43% 43%; border: 2px solid #d4a77f;
-      background: linear-gradient(135deg, #f5d4b6, #dba57e);
-      box-shadow: inset -8px -8px 0 rgba(112,57,38,.08), 0 5px 0 rgba(0,0,0,.12);
-    }
-    .mascot-hair {
-      position: absolute; top: -8px; left: -2px; width: 94px; height: 42px;
-      border-radius: 48% 50% 25% 25%; background: linear-gradient(145deg, #202936, #080d16);
-      transform: rotate(-3deg);
-    }
-    .mascot-hair::before, .mascot-hair::after {
-      content: ""; position: absolute; top: 15px; width: 28px; height: 22px;
-      background: #111925; border-radius: 70% 40% 50% 30%;
-    }
-    .mascot-hair::before { left: 0; transform: rotate(-22deg); }
-    .mascot-hair::after { right: 1px; transform: rotate(22deg); }
-    .mascot-ear { position: absolute; width: 12px; height: 21px; top: 35px; background: #e8b891; border-radius: 50%; }
-    .mascot-ear.left { left: -7px; } .mascot-ear.right { right: -7px; }
-    .eye { position: absolute; z-index: 4; top: 43px; width: 7px; height: 10px; border-radius: 50%; background: #20232b; }
-    .eye.left { left: 25px; } .eye.right { right: 25px; }
-    .mascot-smile { position: absolute; z-index: 4; left: 39px; top: 59px; width: 16px; height: 8px; border-bottom: 2px solid #8c4d48; border-radius: 50%; }
-    .cheek { position: absolute; top: 57px; width: 12px; height: 6px; border-radius: 50%; background: rgba(235,112,111,.4); }
-    .cheek.left { left: 12px; } .cheek.right { right: 12px; }
-    .mascot-body {
-      position: absolute; z-index: 2; top: 94px; left: 35px; width: 69px; height: 82px;
-      border-radius: 20px 20px 12px 12px; background: linear-gradient(110deg, #f7f8fc 0 22%, #121d30 23% 78%, #e6c785 79%);
-      border: 1px solid rgba(255,255,255,.22); transform-origin: top center; transition: transform .3s;
-    }
-    .tie { position: absolute; left: 29px; top: 7px; width: 12px; height: 39px; background: linear-gradient(#e9d08e,#a57c35); clip-path: polygon(50% 0,100% 18%,65% 100%,35% 100%,0 18%); }
-    .arm { position: absolute; z-index: 4; top: 103px; width: 18px; height: 54px; border-radius: 12px; background: #17253a; border: 1px solid #43556a; }
-    .arm.left { left: 21px; transform: rotate(22deg); }
-    .arm.right { right: 16px; transform: rotate(-34deg); }
-    .leg { position: absolute; z-index: 1; top: 165px; width: 22px; height: 30px; background: #0c1423; border-radius: 4px 4px 8px 8px; }
-    .leg.left { left: 43px; } .leg.right { left: 75px; }
-    .shoe { position: absolute; top: 187px; width: 30px; height: 12px; background: #090e18; border-radius: 8px 9px 4px 4px; }
-    .shoe.left { left: 36px; } .shoe.right { left: 72px; }
-    .magnifier {
-      position: absolute; z-index: 5; right: -1px; top: 78px; width: 41px; height: 41px;
-      border: 5px solid var(--cyan); border-radius: 50%; background: rgba(87,231,245,.12);
-      box-shadow: 0 0 16px rgba(87,231,245,.42), inset 0 0 12px rgba(87,231,245,.15);
-      transform: rotate(-15deg);
-    }
-    .magnifier::after {
-      content: ""; position: absolute; width: 8px; height: 29px; background: var(--cyan);
-      border-radius: 8px; right: -10px; bottom: -22px; transform: rotate(-10deg);
-    }
-    .mascot-label {
-      position: absolute; right: 4px; top: -15px; white-space: nowrap; font-size: 9px; letter-spacing: 1px;
-      color: var(--cyan); background: rgba(6,16,31,.86); border: 1px solid rgba(87,231,245,.24);
-      border-radius: 8px; padding: 6px 8px;
-    }
-    .mascot.peek .mascot-label { opacity: 0; }
-    .mascot-tip {
-      position: fixed; z-index: 29; right: 25px; bottom: 235px; max-width: 180px;
-      padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line);
-      background: rgba(7,19,36,.9); color: #d6e5f4; font-size: 10px; line-height: 1.6;
-      opacity: 0; transform: translateY(8px); transition: .3s; pointer-events: none;
-    }
-    .mascot-tip.show { opacity: 1; transform: translateY(0); }
-    .mascot-toggle {
-      position: fixed; z-index: 31; right: 17px; bottom: 16px; width: 32px; height: 32px;
-      border-radius: 50%; border: 1px solid var(--line); background: #10243c;
-      color: white; cursor: pointer; font-size: 13px;
-    }
-
-    @media (max-width: 800px) {
-      .nav-links { display: none; position: absolute; top: 73px; left: 0; right: 0; padding: 20px;
-        background: #09172a; border-bottom: 1px solid var(--line); flex-direction: column; }
-      .nav-links.open { display: flex; }
-      .menu-btn { display: inline-block; }
-      .hero { padding: 65px 0 45px; min-height: auto; }
-      .hero-grid, .about-grid, .area-panel, .contact-grid { grid-template-columns: 1fr; }
-      .visual { min-height: 350px; }
-      .orbit { width: 270px; height: 270px; }
-      .center-symbol { width: 145px; height: 145px; border-radius: 32px; }
-      .center-symbol span { font-size: 60px; }
-      .card-a { right: 0; top: 20px; } .card-b { left: 0; bottom: 18px; }
-      .services { grid-template-columns: 1fr; }
-      section { padding: 65px 0; }
-      .mascot { right: 5px; transform: scale(.78) translateY(var(--scroll-shift)); transform-origin: bottom right; }
-      .mascot.peek { right: -91px; }
-      .mascot-tip { right: 12px; bottom: 188px; }
-      .mascot-toggle { right: 8px; bottom: 8px; }
-      h1 { letter-spacing: -2px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
-    }
-  </style>
+/* Your mascot: follows scrolling while remaining near the screen edge */
+.mascot-follow {
+  position:fixed; z-index:40; right:clamp(8px,2.3vw,30px); bottom:0;
+  width:clamp(120px,17vw,215px); pointer-events:none;
+  transform:translateY(5px); animation:mascotBob 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 20px rgba(87,231,245,.16));
+  transition:width .25s,filter .25s;
+}
+.mascot-follow img { display:block; width:100%; height:auto; object-fit:contain; object-position:bottom; }
+.mascot-label {
+  position:absolute; right:82%; bottom:40%; width:max-content; max-width:190px;
+  padding:10px 13px; color:#eafaff; font-size:11px; line-height:1.5;
+  background:rgba(8,25,44,.93); border:1px solid rgba(87,231,245,.42);
+  border-radius:12px 12px 3px 12px; box-shadow:0 0 24px rgba(87,231,245,.12);
+}
+.mascot-label:after { content:""; position:absolute; right:-6px; bottom:8px; width:10px; height:10px; background:#09192c; border-top:1px solid var(--cyan); border-right:1px solid var(--cyan); transform:rotate(45deg); }
+.magnifier {
+  position:absolute; right:6%; top:38%; width:34px; height:34px;
+  border:4px solid var(--gold); border-radius:50%;
+  box-shadow:0 0 15px rgba(234,203,131,.4),inset 0 0 12px rgba(87,231,245,.25);
+  opacity:.95; animation:searchSweep 5s ease-in-out infinite;
+}
+.magnifier:after { content:""; position:absolute; width:23px; height:5px; border-radius:8px; background:var(--gold); right:20px; bottom:-9px; transform:rotate(-48deg); transform-origin:right center; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes mascotBob { 0%,100%{transform:translateY(5px)} 50%{transform:translateY(-7px)} }
+@keyframes searchSweep { 0%,100%{transform:translate(0,0) rotate(0)} 50%{transform:translate(-13px,-12px) rotate(15deg)} }
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .7s,transform .7s; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+@media(max-width:760px) {
+  .nav { min-height:68px; }
+  .navlinks { display:none; }
+  .hero { grid-template-columns:1fr; padding:60px 0 35px; min-height:auto; }
+  .visual { min-height:350px; }
+  .grid { grid-template-columns:1fr; }
+  .about { grid-template-columns:1fr; }
+  .contact { flex-direction:column; align-items:flex-start; padding:26px; }
+  .mascot-follow { width:112px; right:0; }
+  .mascot-label { right:78%; max-width:135px; font-size:10px; }
+  .magnifier { width:27px; height:27px; border-width:3px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after { scroll-behavior:auto!important; animation:none!important; transition:none!important; }
+}
+</style>
 </head>
-
 <body>
-  <div class="glow one"></div><div class="glow two"></div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="理想型 Property Matchmaker home">
+      <img src="IMG_4235.JPG" alt="理想型 Logo">
+      <span class="brand-name">理想型 <span style="color:var(--cyan)">Property Matchmaker</span><small>PENANG · MALAYSIA</small></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#about" data-en="About" data-zh="关于我">关于我</a>
+      <a href="#services" data-en="Services" data-zh="服务内容">服务内容</a>
+      <a href="#contact" data-en="Contact" data-zh="联系我">联系我</a>
+    </nav>
+    <button class="lang" id="langBtn" type="button">EN / 中文</button>
+  </div>
+</header>
 
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="Property Matchmaker home">
-        <span class="brand-mark">⌕</span>
-        <span>理想型 <small>PROPERTY MATCHMAKER</small></span>
-      </a>
-      <nav class="nav-links" id="navLinks">
-        <a href="#home" data-en="Home" data-zh="首页">Home</a>
-        <a href="#about" data-en="About" data-zh="关于我">About</a>
-        <a href="#services" data-en="Services" data-zh="服务">Services</a>
-        <a href="#area" data-en="Penang Areas" data-zh="槟城区域">Penang Areas</a>
-        <a href="#contact" data-en="Contact" data-zh="联系我">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="lang-btn" id="langBtn" type="button">中文</button>
-        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+<main>
+  <section class="wrap hero" id="home">
+    <div class="hero-copy reveal">
+      <div class="eyebrow" data-en="Your Property Matchmaker · Penang" data-zh="你的专属房产配对顾问 · 槟城">你的专属房产配对顾问 · 槟城</div>
+      <h1 data-en-html="Find a place<br>that feels like <span>you.</span>" data-zh-html="找到真正<br><span>适合你的家。</span>">找到真正<br><span>适合你的家。</span></h1>
+      <p class="lead" data-en="A better property journey starts with understanding you. Explore your options, compare what matters, and make your next move with more confidence." data-zh="买房不只是选一个单位，而是找到适合你生活与目标的选择。一起了解需求、比较选项，让每一步置业决定更有方向。">买房不只是选一个单位，而是找到适合你生活与目标的选择。一起了解需求、比较选项，让每一步置业决定更有方向。</p>
+      <div class="actions">
+        <a class="btn btn-primary whatsapp-link" href="#contact"><span data-en="Let's Talk" data-zh="聊聊你的置业计划">聊聊你的置业计划</span> ↗</a>
+        <a class="btn btn-secondary" href="#services" data-en="Explore My Services" data-zh="了解我的服务">了解我的服务</a>
       </div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="pulse"></span><span data-en="YOUR PROPERTY MATCHMAKER IN PENANG" data-zh="你的槟城房地产配对顾问">YOUR PROPERTY MATCHMAKER IN PENANG</span></div>
-          <h1><span data-en="Find a place" data-zh="找到属于你的">Find a place</span><br><span class="gradient-text" data-en="that fits your future." data-zh="理想未来。">that fits your future.</span></h1>
-          <p data-en="A property is more than an address. Let's explore the right home or investment for your needs, lifestyle and plans — with personal guidance throughout your journey." data-zh="房子不只是一个地址。无论你正在寻找理想家园，还是规划房地产投资，我都会根据你的需求、生活方式和未来目标，陪你一步步找到适合的选择。">A property is more than an address. Let's explore the right home or investment for your needs, lifestyle and plans — with personal guidance throughout your journey.</p>
-          <div class="hero-buttons">
-            <a class="btn btn-primary whatsapp-link" href="#contact" data-en="Let's Find Your Match ↗" data-zh="寻找你的理想房子 ↗">Let's Find Your Match ↗</a>
-            <a class="btn btn-secondary" href="#about" data-en="Get to Know Me" data-zh="认识我">Get to Know Me</a>
-          </div>
-          <div class="hero-note" data-en="PENANG, MALAYSIA · PERSONAL GUIDANCE · BILINGUAL SERVICE" data-zh="马来西亚槟城 · 一对一协助 · 中英双语服务">PENANG, MALAYSIA · PERSONAL GUIDANCE · BILINGUAL SERVICE</div>
-        </div>
-
-        <div class="visual" aria-label="Abstract futuristic property matching visual">
-          <div class="orbit"></div>
-          <div class="center-symbol"><span>⌕</span></div>
-          <div class="glass-card card-a"><b data-en="YOUR NEXT CHAPTER" data-zh="开启人生新篇章">YOUR NEXT CHAPTER</b><span data-en="A place that feels right." data-zh="找到真正适合你的地方。">A place that feels right.</span></div>
-          <div class="glass-card card-b"><b data-en="MATCH · EXPLORE · PLAN" data-zh="配对 · 探索 · 规划">MATCH · EXPLORE · PLAN</b><span data-en="Property guidance, made personal." data-zh="专属于你的房地产咨询。">Property guidance, made personal.</span></div>
-        </div>
+    <div class="visual" aria-label="3D futuristic property matching visual">
+      <div class="orb"></div>
+      <div class="float-tag tag-one">⌕ SMART PROPERTY SEARCH</div>
+      <div class="float-tag tag-two">✦ YOUR GOALS · YOUR HOME</div>
+      <div class="holo-card">
+        <div class="holo-icon">⌂</div>
+        <span class="chip">PROPERTY MATCHING</span>
+        <strong style="margin-top:15px" data-en="More than a property." data-zh="不只是一个房子。">不只是一个房子。</strong>
+        <p data-en="A choice that fits your lifestyle, plans and future." data-zh="找到符合生活方式、预算规划与未来目标的选择。">找到符合生活方式、预算规划与未来目标的选择。</p>
       </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-label" data-en="A LITTLE ABOUT ME" data-zh="关于我">A LITTLE ABOUT ME</div>
-          <h2 data-en="Property decisions, made more personal." data-zh="让买房这件事，更贴近你的需要。">Property decisions, made more personal.</h2>
-          <p class="section-intro" data-en="My role is to understand what matters to you, help you compare your options and make your property journey clearer — without unnecessary pressure." data-zh="我的工作不只是介绍房子，而是先了解你真正在意什么，再协助你比较选择，让房地产决策更清楚、更有方向，不必在压力下匆忙决定。">My role is to understand what matters to you, help you compare your options and make your property journey clearer — without unnecessary pressure.</p>
-        </div>
-        <div class="about-grid">
-          <div class="panel">
-            <div class="quote-mark">“</div>
-            <h3 data-en="The right match is about you." data-zh="理想的配对，应该从你开始。">The right match is about you.</h3>
-            <p data-en="Your budget, priorities and plans come first. Together, we can narrow down suitable choices and understand the details before you take the next step." data-zh="预算、需求和未来规划应该放在第一位。我们可以一起筛选合适的选择，了解相关细节，再决定下一步。">Your budget, priorities and plans come first. Together, we can narrow down suitable choices and understand the details before you take the next step.</p>
-            <div class="mini-tags"><span class="tag">Personal guidance</span><span class="tag">Clear communication</span><span class="tag">Penang focus</span></div>
-          </div>
-          <div class="panel">
-            <h3 data-en="How I can help" data-zh="我可以怎样协助你">How I can help</h3>
-            <p data-en="From understanding your needs to arranging property viewings and discussing your options, I'll help you approach each step with more clarity. Every decision remains yours." data-zh="从了解你的需求、安排看房，到讨论不同选择，我会尽量让每一步更清楚。最终的决定始终由你自己做主。">From understanding your needs to arranging property viewings and discussing your options, I'll help you approach each step with more clarity. Every decision remains yours.</p>
-            <p data-en="Languages: English and Chinese. Service area: Penang, Malaysia." data-zh="服务语言：英文与中文。服务区域：马来西亚槟城。">Languages: English and Chinese. Service area: Penang, Malaysia.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-label" data-en="WHAT I DO" data-zh="我的服务">WHAT I DO</div>
-          <h2 data-en="Your goals. Your pace. Your next move." data-zh="你的目标，由你决定步伐。">Your goals. Your pace. Your next move.</h2>
-          <p class="section-intro" data-en="Practical support for different stages of your property journey." data-zh="根据你所处的阶段，提供实际、清楚的房地产协助。">Practical support for different stages of your property journey.</p>
-        </div>
-        <div class="services">
-          <article class="service-card">
-            <div class="service-icon">⌂</div>
-            <h3 data-en="Find Your Home" data-zh="寻找理想家园">Find Your Home</h3>
-            <p data-en="Explore options based on your budget, preferred location, daily lifestyle and future needs." data-zh="根据你的预算、地点偏好、日常生活方式和未来需求，探索适合的居所。">Explore options based on your budget, preferred location, daily lifestyle and future needs.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">◈</div>
-            <h3 data-en="Property Investment" data-zh="房地产投资咨询">Property Investment</h3>
-            <p data-en="Discuss location, property purpose, costs and potential risks so you can evaluate choices more carefully." data-zh="一起了解地点、投资目的、相关成本和潜在风险，帮助你更全面地评估选择。">Discuss location, property purpose, costs and potential risks so you can evaluate choices more carefully.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">⌖</div>
-            <h3 data-en="Area Guidance" data-zh="槟城区域分析">Area Guidance</h3>
-            <p data-en="Understand neighbourhoods, accessibility, nearby amenities and the factors that matter to you." data-zh="了解不同社区、交通便利度、周边设施，以及对你最重要的区域因素。">Understand neighbourhoods, accessibility, nearby amenities and the factors that matter to you.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="area">
-      <div class="container">
-        <div class="area-panel">
-          <div>
-            <div class="section-label" data-en="LOCAL KNOWLEDGE" data-zh="在地服务">LOCAL KNOWLEDGE</div>
-            <h2 data-en="Explore Penang, your way." data-zh="用适合你的方式，探索槟城。">Explore Penang, your way.</h2>
-            <p class="section-intro" data-en="Looking around the island or the mainland? Tell me what matters most, and we can discuss areas that fit your needs." data-zh="无论你关注槟城岛还是威省，都可以告诉我你最重视的条件，我们再一起讨论适合你的区域。">Looking around the island or the mainland? Tell me what matters most, and we can discuss areas that fit your needs.</p>
-            <div class="area-list">
-              <span>George Town</span><span>Bayan Lepas</span><span>Gelugor</span>
-              <span>Air Itam</span><span>Tanjung Tokong</span><span>Mainland Penang</span>
-            </div>
-          </div>
-          <div class="area-visual"><div class="map-ring"><div class="map-pin">⌖</div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-label" data-en="TRUST & COMMUNICATION" data-zh="信任与沟通">TRUST & COMMUNICATION</div>
-          <h2 data-en="A good journey starts with a conversation." data-zh="好的开始，来自一次真诚的沟通。">A good journey starts with a conversation.</h2>
-        </div>
-        <div class="review-note" data-en="I believe clear communication and understanding your needs are essential. Have worked with me before? This space can be updated with your real client feedback once you have permission to publish it." data-zh="我相信，清楚的沟通和真正了解客户的需求，是良好服务的基础。如果你曾经与我合作，可以在获得客户同意后，把真实的客户评价放在这里。">I believe clear communication and understanding your needs are essential. Have worked with me before? This space can be updated with your real client feedback once you have permission to publish it.</div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container contact-grid">
-        <div>
-          <div class="section-label" data-en="LET'S TALK" data-zh="联系我">LET'S TALK</div>
-          <h2 data-en="Let's find your ideal match." data-zh="一起寻找你的理想型。">Let's find your ideal match.</h2>
-          <p class="section-intro" data-en="Tell me what you're looking for. A simple conversation is a good place to start." data-zh="告诉我你正在寻找什么。一段简单的对话，就是很好的开始。">Tell me what you're looking for. A simple conversation is a good place to start.</p>
-          <div class="hero-buttons">
-            <a class="btn btn-primary whatsapp-link" href="#contact" data-en="Chat on WhatsApp ↗" data-zh="WhatsApp 联系我 ↗">Chat on WhatsApp ↗</a>
-          </div>
-        </div>
-        <div class="contact-card">
-          <h3 data-en="理想型 Property Matchmaker" data-zh="理想型 Property Matchmaker">理想型 Property Matchmaker</h3>
-          <p data-en="Your personal property matchmaker in Penang, Malaysia." data-zh="你在马来西亚槟城的房地产配对顾问。">Your personal property matchmaker in Penang, Malaysia.</p>
-          <div class="contact-detail">
-            <div>⌖ &nbsp; Penang, Malaysia / 马来西亚槟城</div>
-            <div>✉ &nbsp; <span data-en="Contact via WhatsApp" data-zh="通过 WhatsApp 联系">Contact via WhatsApp</span></div>
-            <div class="socials">
-              <a id="facebookLink" href="#contact" target="_blank" rel="noopener">Facebook ↗</a>
-              <a id="instagramLink" href="#contact" target="_blank" rel="noopener">Instagram ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-row">
-      <span>© <span id="year"></span> 理想型 Property Matchmaker</span>
-      <span data-en="Made for your next chapter · Penang, Malaysia" data-zh="为你的下一篇章而设计 · 马来西亚槟城">Made for your next chapter · Penang, Malaysia</span>
     </div>
-  </footer>
+  </section>
 
-  <div class="mascot" id="mascot" aria-label="Animated property matchmaker character">
-    <div class="mascot-inner">
-      <div class="mascot-halo"></div>
-      <div class="mascot-label">PROPERTY MATCHMAKER</div>
-      <div class="mascot-head">
-        <div class="mascot-hair"></div>
-        <div class="mascot-ear left"></div><div class="mascot-ear right"></div>
-        <div class="eye left"></div><div class="eye right"></div>
-        <div class="cheek left"></div><div class="cheek right"></div>
-        <div class="mascot-smile"></div>
+  <section class="wrap" id="about">
+    <div class="about reveal">
+      <div class="about-panel">
+        <div class="eyebrow" data-en="A little about me" data-zh="关于理想型">关于理想型</div>
+        <div class="big">01 / YOU</div>
+        <p style="color:var(--muted);line-height:1.8" data-en="Your goals come first." data-zh="先了解你，再寻找合适的选择。">先了解你，再寻找合适的选择。</p>
       </div>
-      <div class="arm left"></div><div class="arm right"></div>
-      <div class="mascot-body"><div class="tie"></div></div>
-      <div class="leg left"></div><div class="leg right"></div>
-      <div class="shoe left"></div><div class="shoe right"></div>
-      <div class="magnifier"></div>
+      <div class="about-copy">
+        <div class="eyebrow" data-en="Personal guidance · Penang" data-zh="个人置业咨询 · 全槟城">个人置业咨询 · 全槟城</div>
+        <h2 data-en="Property decisions, made clearer." data-zh="让房地产选择更清晰。">让房地产选择更清晰。</h2>
+        <p data-en="Hi, I'm your Property Matchmaker in Penang. I help home buyers and property seekers understand their options and make informed decisions based on their needs, preferences and plans." data-zh="你好，我是你的理想型 Property Matchmaker，服务范围覆盖槟城。我希望用清晰、容易理解的方式，协助你了解房产选择，并根据自己的需求、预算与规划做出决定。">你好，我是你的理想型 Property Matchmaker，服务范围覆盖槟城。我希望用清晰、容易理解的方式，协助你了解房产选择，并根据自己的需求、预算与规划做出决定。</p>
+        <div class="pills"><span>📍 Penang 全槟城</span><span>🏡 Home Buyers</span><span>✦ Property Guidance</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="services">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-en="How I can help" data-zh="我可以如何协助你">我可以如何协助你</div>
+      <h2 data-en="Your goals. Your next move." data-zh="你的目标，下一步一起规划。">你的目标，下一步一起规划。</h2>
+      <p data-en="Every buyer has a different story. Start with what matters to you, then explore the options that make sense." data-zh="每个人的置业需求都不一样。先从你的实际需求出发，再一步步了解适合自己的选择。">每个人的置业需求都不一样。先从你的实际需求出发，再一步步了解适合自己的选择。</p>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-icon">⌂</div>
+        <h3 data-en="Find Your Home" data-zh="寻找理想家园">寻找理想家园</h3>
+        <p data-en="Clarify your preferred location, budget and lifestyle, and get guidance on the home-buying journey." data-zh="根据你的地点偏好、预算与生活方式，了解买房流程与可考虑的选择。">根据你的地点偏好、预算与生活方式，了解买房流程与可考虑的选择。</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-icon">◇</div>
+        <h3 data-en="Property Investment" data-zh="房地产投资方向">房地产投资方向</h3>
+        <p data-en="Understand factors such as location, target tenants, costs and potential risks before making a decision." data-zh="在做决定之前，一起了解地点、目标租客、相关成本与潜在风险等重要因素。">在做决定之前，一起了解地点、目标租客、相关成本与潜在风险等重要因素。</p>
+      </article>
+      <article class="card reveal">
+        <div class="card-icon">⌕</div>
+        <h3 data-en="Explore Penang" data-zh="了解槟城各区">了解槟城各区</h3>
+        <p data-en="Explore different areas across Penang based on your commute, daily needs and personal priorities." data-zh="从通勤、日常生活需求与个人优先事项出发，了解槟城不同地区的特点。">从通勤、日常生活需求与个人优先事项出发，了解槟城不同地区的特点。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="contact">
+    <div class="contact reveal">
+      <div>
+        <div class="eyebrow" data-en="Let's find your match" data-zh="一起寻找适合你的选择">一起寻找适合你的选择</div>
+        <h2 data-en="Your next chapter starts here." data-zh="你的置业下一步，从这里开始。">你的置业下一步，从这里开始。</h2>
+        <p data-en="Tell me what you are looking for. Let's start with a conversation." data-zh="告诉我你的需求、预算或想了解的地区，我们可以先从一次简单的交流开始。">告诉我你的需求、预算或想了解的地区，我们可以先从一次简单的交流开始。</p>
+      </div>
+      <a class="btn btn-primary whatsapp-link" href="#" target="_blank" rel="noopener">WhatsApp ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>© <span id="year"></span> 理想型 Property Matchmaker · Penang, Malaysia</div>
+    <div class="social">
+      <a href="#" id="facebookLink" target="_blank" rel="noopener">Facebook</a>
+      <a href="#" id="instagramLink" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
-  <div class="mascot-tip" id="mascotTip">Looking for your ideal place? Let's explore together.</div>
-  <button class="mascot-toggle" id="mascotToggle" aria-label="Toggle character" title="Show or hide character">−</button>
+</footer>
 
-  <script>
-    // EDIT THESE THREE VALUES with your real contact details.
-    const whatsappNumber = "601116186452"; // Example: 60123456789 (country code, no + or spaces)
-    const facebookURL = "";   // Example: https://www.facebook.com/yourpage
-    const instagramURL = "";  // Example: https://www.instagram.com/youraccount
+<!-- Replaceable mascot image; fixed to the viewport so it stays visible while scrolling -->
+<div class="mascot-follow" id="mascot">
+  <div class="mascot-label" id="mascotLabel">🔎 正在寻找适合你的家</div>
+  <div class="magnifier" aria-hidden="true"></div>
+  <img src="Mascot.png" alt="理想型的 Q 版西装人物，手持放大镜寻找房子">
+</div>
 
-    let currentLanguage = "en";
-    const langBtn = document.getElementById("langBtn");
+<script>
+/* Add your WhatsApp number with country code, without + or spaces.
+   Example: 60123456789 */
+const whatsappNumber = "";
+const facebookURL = "";
+const instagramURL = "";
 
-    langBtn.addEventListener("click", () => {
-      currentLanguage = currentLanguage === "en" ? "zh" : "en";
-      document.documentElement.lang = currentLanguage;
-      document.querySelectorAll("[data-en][data-zh]").forEach(el => {
-        el.textContent = el.dataset[currentLanguage];
-      });
-      langBtn.textContent = currentLanguage === "en" ? "中文" : "English";
-      document.title = currentLanguage === "en"
-        ? "理想型 Property Matchmaker | Penang Real Estate"
-        : "理想型 Property Matchmaker｜槟城房地产";
-      document.getElementById("mascotTip").textContent = currentLanguage === "en"
-        ? "Looking for your ideal place? Let's explore together."
-        : "正在寻找理想的房子吗？我们一起探索吧！";
-    });
+document.getElementById("year").textContent = new Date().getFullYear();
 
-    document.getElementById("menuBtn").addEventListener("click", () => {
-      document.getElementById("navLinks").classList.toggle("open");
-    });
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => document.getElementById("navLinks").classList.remove("open"));
-    });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const waURL = whatsappNumber
-      ? "https://wa.me/" + whatsappNumber
-      : "https://wa.me/";
-    document.querySelectorAll(".whatsapp-link").forEach(link => link.href = waURL);
-
-    const fb = document.getElementById("facebookLink");
-    const ig = document.getElementById("instagramLink");
-    if (facebookURL) fb.href = facebookURL;
-    if (instagramURL) ig.href = instagramURL;
-
-    const mascot = document.getElementById("mascot");
-    const mascotTip = document.getElementById("mascotTip");
-    let scrollTimer;
-    let lastScroll = 0;
-
-    function updateMascot() {
-      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const progress = window.scrollY / maxScroll;
-      const shift = Math.sin(progress * Math.PI * 6) * 13;
-      mascot.style.setProperty("--scroll-shift", shift + "px");
-
-      const scrollingDown = window.scrollY > lastScroll;
-      mascot.classList.toggle("peek", scrollingDown && window.scrollY > 180);
-      lastScroll = window.scrollY;
-
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => mascot.classList.remove("peek"), 650);
-      mascotTip.classList.toggle("show", window.scrollY > 300 && window.scrollY < 650);
+function updateContactLinks() {
+  const validNumber = whatsappNumber.replace(/\D/g, "");
+  document.querySelectorAll(".whatsapp-link").forEach(link => {
+    if (validNumber) {
+      link.href = "https://wa.me/" + validNumber;
+      link.target = "_blank";
+      link.rel = "noopener";
+    } else {
+      link.href = "#contact";
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        alert("请先在 index.html 里填写你的 WhatsApp 电话号码。");
+      }, { once: true });
     }
-    window.addEventListener("scroll", updateMascot, { passive: true });
-    updateMascot();
+  });
+  if (facebookURL) document.getElementById("facebookLink").href = facebookURL;
+  else document.getElementById("facebookLink").addEventListener("click", e => {
+    e.preventDefault(); alert("请先填写你的 Facebook 主页链接。");
+  });
+  if (instagramURL) document.getElementById("instagramLink").href = instagramURL;
+  else document.getElementById("instagramLink").addEventListener("click", e => {
+    e.preventDefault(); alert("请先填写你的 Instagram 账号链接。");
+  });
+}
+updateContactLinks();
 
-    document.getElementById("mascotToggle").addEventListener("click", () => {
-      const hidden = mascot.style.display === "none";
-      mascot.style.display = hidden ? "block" : "none";
-      mascotTip.style.display = hidden ? "block" : "none";
-      document.getElementById("mascotToggle").textContent = hidden ? "−" : "+";
-    });
-  </script>
+/* English / Chinese toggle */
+let currentLang = "zh";
+const langButton = document.getElementById("langBtn");
+langButton.addEventListener("click", () => {
+  currentLang = currentLang === "zh" ? "en" : "zh";
+  document.documentElement.lang = currentLang === "zh" ? "zh-CN" : "en";
+  document.querySelectorAll("[data-en][data-zh]").forEach(el => {
+    el.textContent = el.dataset[currentLang];
+  });
+  document.querySelectorAll("[data-en-html][data-zh-html]").forEach(el => {
+    el.innerHTML = el.dataset[currentLang + "Html"];
+  });
+  langButton.textContent = currentLang === "zh" ? "EN / 中文" : "中文 / EN";
+  document.getElementById("mascotLabel").textContent =
+    currentLang === "zh" ? "🔎 正在寻找适合你的家" : "🔎 Finding a home that fits you";
+});
+
+/* Reveal sections gently as visitors scroll */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+/* Mascot remains fixed at the edge and reacts to scroll direction */
+let lastScrollY = window.scrollY;
+let scrollTimer;
+const mascot = document.getElementById("mascot");
+window.addEventListener("scroll", () => {
+  const currentY = window.scrollY;
+  const goingDown = currentY > lastScrollY;
+  mascot.style.transform = goingDown ? "translateY(0) rotate(-1deg)" : "translateY(-5px) rotate(1deg)";
+  mascot.style.filter = goingDown
+    ? "drop-shadow(0 0 25px rgba(87,231,245,.25))"
+    : "drop-shadow(0 0 18px rgba(234,203,131,.22))";
+  lastScrollY = currentY;
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    mascot.style.transform = "";
+    mascot.style.filter = "";
+  }, 350);
+}, { passive:true });
+</script>
 </body>
 </html>
